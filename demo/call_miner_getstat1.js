@@ -1,6 +1,6 @@
 const net = require("net");
 
-let client = net.createConnection(33303, 'localhost', () => {
+let client = net.createConnection(33302, 'localhost', () => {
 	//if the following response call does not permit to make the difference
 	//between claymore and ethminer
 	//a change can be done : claymore does not wait for \n whereas ethminer does

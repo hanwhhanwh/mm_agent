@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/hanwhhanwh/mm_agent/issues"
   },
-  "homepage": "https://github.com/hanwhhanwh/mm_agent#readme"
+  "homepage": "https://github.com/hanwhhanwh/mm_agent#readme",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
 }
