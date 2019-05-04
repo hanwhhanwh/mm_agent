@@ -3,9 +3,10 @@
  * @author  hanwhhanwh@gmail.com
  * @date    2019-04-28
  */
-const net = require("mysql");
+//const net = require("mysql");
 
-const config = require("../config/mariadb.json");
+//const config = require("../config/mariadb.json");
+const mariadb = require("../lib/mariadb.js");
 
 //console.log("config => " + config.host);
 
