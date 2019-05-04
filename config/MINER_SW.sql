@@ -1,0 +1,14 @@
+-- DROP TABLE IF EXISTS MINER_SW;
+
+CREATE TABLE IF NOT EXISTS MINER_SW
+(
+	`miner_sw_no` INT NOT NULL AUTO_INCREMENT COMMENT '채굴 S/W 고유식별번호'
+	, `miner_sw_name` VARCHAR (100) NOT NULL COMMENT '채굴 S/W 문자열'
+	, `reg_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '채굴 S/W 등록일'
+
+	, PRIMARY KEY ( `miner_sw_no` )
+)
+ENGINE=InnoDB
+COLLATE='utf8_general_ci'
+COMMENT='채굴 SW 정보 관리 테이블'
+;
