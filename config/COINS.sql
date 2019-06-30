@@ -12,6 +12,9 @@ CREATE TABLE IF NOT EXISTS COINS
 	, `reg_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '채굴 코인 등록시각'
 
 	, PRIMARY KEY ( `coin_no` )
+	, UNIQUE INDEX `UNIQ_EN_NAME` ( `coin_en_name` )
+	, UNIQUE INDEX `UNIQ_KO_NAME` ( `coin_ko_name` )
+	, UNIQUE INDEX `UNIQ_ID` ( `coin_id` )
 )
 ENGINE=InnoDB
 COLLATE='utf8_general_ci'
@@ -25,7 +28,6 @@ INSERT INTO COINS ( `coin_ko_name`, `coin_en_name`, `coin_id`, `hash_unit`, `hom
 	, ( '이더소셜', 'Ethersocial', 'ESN', 1, NULL )
 	, ( '칼리스토', 'Calisto', 'CLO', 1, NULL )
 	, ( '헌혈코인', 'Blood Donation Coin-Brazilian Coin', 'BBRC', 0, NULL )
-	, ( '비트코인 노바', 'Bitcoin Nova', 'BTN', 0, NULL )
 	, ( '인텐스', 'Intense', 'ITN', 0, NULL )
 	, ( '이오스', 'EOS', 'EOS', 0, NULL )
 	, ( '메타버스', 'Metaverse', 'ETP', 1, NULL )
