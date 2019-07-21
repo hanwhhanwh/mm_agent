@@ -1,7 +1,7 @@
 {
     "host": "localhost"
-    , "prot": 16033
+    , "port": 16033
     , "user": "mm_agent"
     , "password": "mm_agent2019^^"
-    , "database": "MINER"
+    , "database": "miner"
 }
