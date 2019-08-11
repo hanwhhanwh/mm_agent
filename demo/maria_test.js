@@ -17,10 +17,16 @@ mariadb.getConnection(function(err, connection) {
         // return;
     }
 
-    connection.query('SELECT * FROM COINS', function(err, rows, fields) {
+    let strQuery = "\
+SELECT\
+    miner_no, miner_name, INET_NTOA(miner_ip) AS miner_ip, reg_date, mod_date\
+    , miner_spec \
+FROM MINERS AS M;\
+            ";
+    connection.query(strQuery, function(err, rows, fields) {
         if (!err){  
         //response.send(rows);   
-        console.log('The solution is: ', rows[0]);  
+        console.log('The solution is: ', rows);  
         console.log('fields is: ', fields[0]);  
         }  
         else  
