@@ -10,6 +10,7 @@ const mariadb = require("../lib/mariadb.js");
 
 //console.log("config => " + config.host);
 
+/*
 mariadb.getConnection(function(err, connection) {
     if (err) {
         throw err;
@@ -35,4 +36,15 @@ FROM MINERS AS M;\
     });  
     mariadb.end();
 });
+*/
 
+mariadb.getMiners(function(arr_miners) {
+	console.log('Miners => ' + arr_miners); 
+	arr_miners.forEach(function(miner, index, array) {
+		console.log('[' + index + '] Miners => ' + miner.miner_name); 
+	});
+	// foreach(arr_miners as miner) {
+	// 	console.log('Miners => ' + miner); 
+	// }
+	mariadb.end();
+});
