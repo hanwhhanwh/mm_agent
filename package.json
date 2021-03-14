@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/hanwhhanwh/mm_agent/issues"
   },
-  "homepage": "https://github.com/hanwhhanwh/mm_agent#readme"
+  "homepage": "https://github.com/hanwhhanwh/mm_agent#readme",
+  "dependencies": {
+    "request": "^2.88.2",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.1"
+  }
 }
