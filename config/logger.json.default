@@ -1,0 +1,7 @@
+{
+	"logFolder": "./logs",
+	"logFilePrefix": "",
+	"logFileExt": ".log",
+	"isEnableRotateLog": true,
+	"bufferPrintingBytesCount": 40
+}
