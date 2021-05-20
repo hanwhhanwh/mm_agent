@@ -11,7 +11,7 @@ const request = require('request');
 
 let { logger, logBuffer } = require('../lib/logger.js');
 
-const { insertRecentCredits } = require('../demo/mysql_demo.js');
+const { insertWorkers } = require('../demo/mysql_demo.js');
 const { worker } = require('cluster');
 
 let g_strKey = undefined;
@@ -41,12 +41,12 @@ let g_options4API = {
 request.post(g_options4API, callbackMphApi);
 
 
-let worker_list = array();
+let _worker_list = Array();
 
 
 function findWorkerById(worker_id)
 {
-	worker_list.forEach( (worker, index) => { 
+	_worker_list.forEach( (worker, index) => { 
 		if (worker.id == worker_id)
 			return worker;
 	});
@@ -67,10 +67,10 @@ function callbackMphApi(err, res, result) {
 				let _worker = findWorkerById(worker.id)
 				if (_worker == null) { // 신규 worker인지 확인
 					worker.password = "new";
-					worker_list.push(worker);
+					_worker_list.push(worker);
 				}
 			});
-			insertWorkers( 2, json.getuserworkers.data );
+			insertWorkers( 2, json.getuserworkers );
 		}
 		break;
 	default:
