@@ -22,8 +22,6 @@ connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
 connection.end();
 */
 
-let _remain_query = 0;
-
 function insertRecentCredits (coin_no, rows)
 {
 	var connection = mysql.createConnection(db_config);
@@ -49,6 +47,7 @@ ON DUPLICATE KEY UPDATE\
 
 function insertWorkers( coin_no, result )
 {
+	let _remain_query = 0;
 	var connection = mysql.createConnection(db_config);
 	connection.connect({multipleStatements: true});
 
@@ -64,10 +63,10 @@ VALUES (?, ?, ?)\
 	_remain_query ++;
 	connection.query(query, [coin_no, result.version, result.runtime]
 			, function (error, results, fields) {
+		_remain_query --;
 		if (error)
 			throw error;
 		workers_status_no = results.insertId;
-		_remain_query --;
 
 		result.data.forEach( (worker, index) => { 
 			if (worker.password == "new") { // 신규 worker인지 확인
@@ -81,10 +80,10 @@ ON DUPLICATE KEY UPDATE user_name = ?, monitor = ?\
 				_remain_query ++;
 				connection.query(query, [worker.id, worker.username, 'x', worker.monitor, worker.username, worker.monitor]
 						, function (error, results, fields) {
+					_remain_query --;
 					if (error)
 						throw error;
 					//console.log(results);
-					_remain_query --;
 					if (_remain_query <= 0)
 						connection.end();
 				});
@@ -99,12 +98,12 @@ VALUES (?, ?, ?, ?, ?)\
 			_remain_query ++;
 			connection.query(query, [workers_status_no, worker.id, coin_no, worker.hashrate, worker.difficulty]
 					, function (error, results, fields) {
+				_remain_query --;
 				if (error)
 					throw error;
 				//console.log(results);
-				_remain_query --;
 				if (_remain_query <= 0)
-					connection.end();
+					connection.end(); // 모든 쿼리 이용 후, 연결 종료
 			});
 		});
 	});
