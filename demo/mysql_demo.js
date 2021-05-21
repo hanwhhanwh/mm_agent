@@ -92,11 +92,11 @@ ON DUPLICATE KEY UPDATE user_name = ?, monitor = ?\
 			// 해쉬값 저장
 			query = "\
 INSERT INTO WORKERS_STATUS_DATA \
-(work_status_no, worker_no, coin_no, hashrate, difficulty) \
-VALUES (?, ?, ?, ?, ?)\
+(work_status_no, worker_no, coin_no, hashrate) \
+VALUES (?, ?, ?, ?)\
 ;"
 			_remain_query ++;
-			connection.query(query, [workers_status_no, worker.id, coin_no, worker.hashrate, worker.difficulty]
+			connection.query(query, [workers_status_no, worker.id, coin_no, worker.hashrate]
 					, function (error, results, fields) {
 				_remain_query --;
 				if (error)
