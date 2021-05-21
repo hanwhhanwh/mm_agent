@@ -57,11 +57,11 @@ function insertWorkers( coin_no, result )
 	// 상태 정보 저장 처리
 	query = "\
 INSERT INTO WORKERS_STATUS \
-(coin_no, version, runtime) \
-VALUES (?, ?, ?)\
+(coin_no, runtime) \
+VALUES (?, ?)\
 ;";
 	_remain_query ++;
-	connection.query(query, [coin_no, result.version, result.runtime]
+	connection.query(query, [coin_no, result.runtime]
 			, function (error, results, fields) {
 		_remain_query --;
 		if (error)
