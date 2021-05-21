@@ -61,3 +61,10 @@ VALUES (0, 0, 0, 0, 0);
 UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=16734839;
 UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=16734970;
 UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=16642176;
+
+
+-- 불필요한 컬럼들에 대한 필수 제거
+ALTER TABLE `WORKERS_STATUS`
+	CHANGE COLUMN `version` `version` VARCHAR(50) NULL COMMENT 'getuserworkers version 값' COLLATE 'utf8_general_ci' AFTER `coin_no`;
+ALTER TABLE `WORKERS_STATUS_DATA`
+	CHANGE COLUMN `difficulty` `difficulty` DOUBLE(22,0) NULL COMMENT 'getuserworkers difficulty 값' AFTER `hashrate`;
