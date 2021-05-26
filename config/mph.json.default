@@ -1,4 +1,7 @@
 {
 	"key": "key_value"
-	, "coins": ["ethereum", "monero"]
+	, "coins": [
+		{"coin_no": 2, "mph_hostname": "ethereum"},
+		{"coin_no": 3, "mph_hostname": "monero"}
+	]
 }
