@@ -35,8 +35,8 @@ let _actionList = Array(); // Coin별 MPH Action 관리 목록
 logger.info("start MPH monitor agent");
 
 
-let callMphAPI = function(coins) {
-	g_arrCoins.forEach( (coin, index) => {
+let initMphAPI = function(coins) {
+	coins.forEach( (coin) => {
 		//console.log(`[${index}] coin_no = ${coin.coin_no}, mph_hostname = ${coin.mph_hostname}`);
 		//g_agent_list.push(new MphAgent.MphAgent(coin));
 		//console.log(g_worker_list[g_worker_list.length - 1]);
@@ -44,18 +44,18 @@ let callMphAPI = function(coins) {
 	});
 	//g_agent_list[0].call_getuserworkers(g_strKey);
 
-	_actionList.forEach( (action, index) => {
+	_actionList.forEach( (action) => {
 		action.call();
 	});
 }
 
-/*
-request.post(g_options4API, callbackMphApi);
+
+initMphAPI(g_arrCoins);
+
 
 // 5분 마다 API 호출하여 데이터 저장 처리
 const intervalMphMonitor = setInterval(() => {
-	request.post(g_options4API, callbackMphApi);
+	_actionList.forEach( (action) => {
+		action.call();
+	});
 }, 300000);
-*/
-
-callMphAPI();
