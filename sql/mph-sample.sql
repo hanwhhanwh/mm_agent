@@ -68,3 +68,10 @@ ALTER TABLE `WORKERS_STATUS`
 	CHANGE COLUMN `version` `version` VARCHAR(50) NULL COMMENT 'getuserworkers version 값' COLLATE 'utf8_general_ci' AFTER `coin_no`;
 ALTER TABLE `WORKERS_STATUS_DATA`
 	CHANGE COLUMN `difficulty` `difficulty` DOUBLE(22,0) NULL COMMENT 'getuserworkers difficulty 값' AFTER `hashrate`;
+
+
+SELECT
+	*
+FROM WORKERS_STATUS_DATA
+ORDER BY coin_no, work_status_no DESC, worker_no
+LIMIT 200;
