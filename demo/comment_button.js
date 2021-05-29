@@ -37,34 +37,34 @@
 // ==/UserScript==
 
 (function() {
-    'use strict';
+	'use strict';
 
-    // Your code here...
-    if (window.document.location.toString().indexOf("bo_table=realddr&w") >= 0) {
-        var div = window.document.querySelector("div.view-good-box");
+	// Your code here...
+	if (window.document.location.toString().indexOf("bo_table=realddr&w") >= 0) {
+		var div = window.document.querySelector("div.view-good-box");
 		try {
 			var o = document.createElement("button");
 			o.id = "my_comment";
-            o.className = "my-button-tooltip";
-            o.setAttribute("type", "button");
-            o.setAttribute("title", "Comment");
-            o.innerHTML = "Comment"
-            o.addEventListener("click", function (o) {
-                console.log('Comment button for Tampermonkey : ');
-                var wr_content = document.querySelector("#wr_content");
-                if (wr_content != null) {
-                    wr_content.value = "리뷰 잘 보고 갑니다.";
-                    apms_comment('viewcomment');
-                    wr_content.scrollIntoView(false);
-                }
+			o.className = "my-button-tooltip";
+			o.setAttribute("type", "button");
+			o.setAttribute("title", "Comment");
+			o.innerHTML = "Comment"
+			o.addEventListener("click", function (o) {
+				console.log('Comment button for Tampermonkey : ');
+				var wr_content = document.querySelector("#wr_content");
+				if (wr_content != null) {
+					wr_content.value = "리뷰 잘 보고 갑니다.";
+					apms_comment('viewcomment');
+					wr_content.scrollIntoView(false);
+				}
 			}, !0);
-            o.setAttribute("style", "min-height:25px; position:relative; top:1px; cursor: pointer; font: 13px Arial; background: #ff003e; color: #fff; text-transform: uppercase; display: block; padding: 10px 16px; margin: 20px 5px 10px 5px; border: 1px solid #ff0068; border-radius: 2px; font-weight:bold");
-            o.setAttribute("onmouseover", "this.style.backgroundColor='#c10841'");
-            o.setAttribute("onmouseout", "this.style.backgroundColor='#ff003e'");
-            div.insertBefore(o, div.firstChild);
+			o.setAttribute("style", "min-height:25px; position:relative; top:1px; cursor: pointer; font: 13px Arial; background: #ff003e; color: #fff; text-transform: uppercase; display: block; padding: 10px 16px; margin: 20px 5px 10px 5px; border: 1px solid #ff0068; border-radius: 2px; font-weight:bold");
+			o.setAttribute("onmouseover", "this.style.backgroundColor='#c10841'");
+			o.setAttribute("onmouseout", "this.style.backgroundColor='#ff003e'");
+			div.insertBefore(o, div.firstChild);
 		} catch (o) {
 			console.log("Error Comment Button. ", o);
 		}
-        console.log(div);
-    }
+		console.log(div);
+	}
 })();
