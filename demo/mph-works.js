@@ -79,9 +79,8 @@ function callbackMphApi(err, res, result) {
 
 
 request.post(g_options4API, callbackMphApi);
-/*
+
 // 5분 마다 API 호출하여 데이터 저장 처리
 const intervalCallAPI = setInterval(() => {
 	request.post(g_options4API, callbackMphApi);
 }, 300000);
-*/
