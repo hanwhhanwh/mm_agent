@@ -70,8 +70,19 @@ ALTER TABLE `WORKERS_STATUS_DATA`
 	CHANGE COLUMN `difficulty` `difficulty` DOUBLE(22,0) NULL COMMENT 'getuserworkers difficulty 값' AFTER `hashrate`;
 
 
+-- 코인별 최근 수집 현황
 SELECT
-	*
-FROM WORKERS_STATUS_DATA
-ORDER BY coin_no, work_status_no DESC, worker_no
+	R.reg_date, D.*
+FROM WORKERS_STATUS_DATA AS D
+	INNER JOIN (
+		SELECT
+			coin_no, MAX(work_status_no) AS work_status_no, MAX(reg_date) AS reg_date
+		FROM WORKERS_STATUS AS W
+		WHERE 1 = 1
+		GROUP BY coin_no
+	) AS R ON R.coin_no = D.coin_no
+		AND R.work_status_no = D.work_status_no
+ORDER BY D.coin_no, D.work_status_no DESC, worker_no
 LIMIT 200;
+
+SELECT LAST_INSERT_ID();
