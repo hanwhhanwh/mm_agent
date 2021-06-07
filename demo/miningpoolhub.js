@@ -11,6 +11,7 @@ const request = require('request');
 
 let { logger, logBuffer } = require('../lib/logger.js');
 
+const { insertRecentCredits } = require('../demo/mysql_demo.js');
 
 let g_strKey = undefined;
 let g_arrCoins = undefined;
@@ -33,7 +34,7 @@ else {
 
 let g_options4API = {
 	headers: {'Content-Type': 'application/json'},
-	url: 'http://ethereum.miningpoolhub.com/index.php?page=api&action=getdashboarddata&api_key=' + g_strKey,
+	url: 'http://monero.miningpoolhub.com/index.php?page=api&action=getdashboarddata&api_key=' + g_strKey,
 	body: null
 };
 
@@ -43,8 +44,27 @@ request.post(g_options4API, callbackMphApi);
 function callbackMphApi(err, res, result) {
 	switch (res.statusCode) {
 	case 200:
-		logger.debug("Success : API call getdashboarddata")
-		console.log(result);
+		logger.debug("Success : API call getdashboarddata");
+		//console.log(result);
+		const json = JSON.parse(result);
+		//console.log(json.getdashboarddata.data.recent_credits);
+/*
+		let query = "";
+		json.getdashboarddata.data.recent_credits.forEach( (row, index) => {
+			//if (index != 7)
+			//	return;
+			//console.log(index + '> ' + row.date + '  | amount = ' + row.amount);
+			query += "\
+INSERT INTO `RECENT_CREDITS` (`reg_date`, `coin_no`, `amount`) VALUES\
+	('" + row.date +"', 2, " + row.amount +")\
+ON DUPLICATE KEY UPDATE\
+	amount = " + row.amount +"\
+	, `last_update` = NOW()\
+;\n";
+		});
+*/
+		//console.log( query );
+		insertRecentCredits( 4, json.getdashboarddata.data.recent_credits );
 		break;
 	default:
 		logger.error(`REST API call error: ResponseCode=${res.statusCode} \n\t${JSON.parse(result)}`);
