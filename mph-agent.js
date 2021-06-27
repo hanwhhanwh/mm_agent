@@ -11,6 +11,7 @@ const fs = require('fs'); // 파일 시스템
 const { logger } = require('./lib/logger.js');
 const MphAgent = require('./lib/mph.js');
 const GetUserworkers = require('./lib/mph/getuserworkers.js');
+const GetDataboardData = require('./lib/mph/getdashboarddata.js');
 
 let g_strKey = undefined; // MPH API 접근 Key
 let g_arrCoins = undefined; // API로 접근할 coin 목록
@@ -40,6 +41,7 @@ let initMphAPI = function(coins) {
 		//console.log(`[${index}] coin_no = ${coin.coin_no}, mph_hostname = ${coin.mph_hostname}`);
 		//g_agent_list.push(new MphAgent.MphAgent(coin));
 		//console.log(g_worker_list[g_worker_list.length - 1]);
+		_actionList.push(new GetDataboardData(g_strKey, coin.coin_no, coin.mph_hostname));
 		_actionList.push(new GetUserworkers(g_strKey, coin.coin_no, coin.mph_hostname));
 	});
 	//g_agent_list[0].call_getuserworkers(g_strKey);
