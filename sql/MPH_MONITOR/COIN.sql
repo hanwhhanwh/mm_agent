@@ -23,3 +23,6 @@ INSERT INTO `COIN` (`coin_no`, `en_name`, `kr_name`, `acronyms`, `mph_hostname`,
 	, (3, 'Ravencoin', '레이븐', 'RVN', 'ravencoin', 1)
 	, (4, 'Monero', '모네로', 'XMR', 'monero', 1)
 ;
+
+INSERT INTO `COIN` (`coin_no`, `en_name`, `kr_name`, `acronyms`, `mph_hostname`, `is_alert`) VALUES
+	(5, 'Bitcoin Gold', '비트코인 골드', 'BTG', 'bitcoin-gold', 1);
