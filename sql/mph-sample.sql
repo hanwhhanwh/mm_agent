@@ -72,7 +72,7 @@ ALTER TABLE `WORKERS_STATUS_DATA`
 
 -- 코인별 최근 수집 현황
 SELECT
-	R.reg_date, D.*
+	R.reg_date, N.user_name, D.coin_no, D.hashrate, D.worker_no, D.work_status_no
 FROM WORKERS_STATUS_DATA AS D
 	INNER JOIN (
 		SELECT
@@ -82,7 +82,9 @@ FROM WORKERS_STATUS_DATA AS D
 		GROUP BY coin_no
 	) AS R ON R.coin_no = D.coin_no
 		AND R.work_status_no = D.work_status_no
-ORDER BY D.coin_no, D.work_status_no DESC, worker_no
+	INNER JOIN WORKER AS N ON N.worker_no = D.worker_no
+ORDER BY D.coin_no, 2, D.work_status_no DESC, worker_no
 LIMIT 200;
+
 
 SELECT LAST_INSERT_ID();

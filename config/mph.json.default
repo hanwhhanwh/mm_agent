@@ -1,7 +1,9 @@
 {
 	"key": "key_value"
 	, "coins": [
-		{"coin_no": 2, "mph_hostname": "ethereum"},
-		{"coin_no": 3, "mph_hostname": "monero"}
+		{"coin_no": 2, "mph_hostname": "ethereum"}
+		, {"coin_no": 3, "mph_hostname": "ravencoin"}
+		, {"coin_no": 4, "mph_hostname": "monero"}
+		, {"coin_no": 5, "mph_hostname": "bitcoin-gold
 	]
 }
