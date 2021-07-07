@@ -11,5 +11,14 @@ FROM WORKERS_STATUS_DATA AS D
 	) AS R ON R.coin_no = D.coin_no
 		AND R.work_status_no = D.work_status_no
 	INNER JOIN WORKER AS N ON N.worker_no = D.worker_no
+WHERE 1 = 1
+	AND N.is_alert = 1
 ORDER BY D.coin_no, 2, D.work_status_no DESC, worker_no
 LIMIT 200;
+
+
+SELECT
+	*
+FROM RECENT_CREDITS
+ORDER BY reg_date DESC
+LIMIT 12;

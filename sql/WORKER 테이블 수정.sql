@@ -37,3 +37,16 @@ WHERE 1 = 1
 
 ALTER TABLE `WORKER`
 	CHANGE COLUMN `coin_no` `coin_no` INT NOT NULL COMMENT '코인 고유 번호 (FK : COIN.coin_no)' AFTER `worker_no`;
+
+
+-- 채굴 중지된 RVN 장비 모니터링 제외
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30698;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30701;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30702;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30761;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30764;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30793;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30794;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30804;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30806;
+UPDATE `MPH_MONITOR`.`WORKER` SET `is_alert`=b'0' WHERE  `worker_no`=30807;
