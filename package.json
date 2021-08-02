@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/hanwhhanwh/mm_agent#readme",
   "dependencies": {
+    "mysql": "github:mysqljs/mysql",
     "request": "^2.88.2",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.1"

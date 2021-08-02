@@ -14,7 +14,7 @@ FROM WORKERS_STATUS_DATA AS D
 	INNER JOIN COIN AS C ON C.coin_no = D.coin_no
 WHERE 1 = 1
 	AND N.is_alert = 1
-ORDER BY 4, D.coin_no, 2, D.work_status_no DESC, worker_no
+ORDER BY D.coin_no, 4, D.work_status_no DESC, worker_no
 LIMIT 200;
 
 
