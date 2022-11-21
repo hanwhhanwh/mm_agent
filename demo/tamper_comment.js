@@ -1,3 +1,6 @@
+// @match        https://*hellven.net/bbs/board.php?bo_table=kyd&wr_id=*
+// @match        https://*hellven.net/bbs/board.php?bo_table=realddr&wr_id=*
+// @match        https://*hellven.net/bbs/board.php?bo_table=adtfr&wr_id=*
 let CommentMain = {
 	DocOnLoad: function (o) {
 		try {
@@ -35,13 +38,16 @@ let CommentMain = {
 			elmNewButton.setAttribute("onmouseout", "this.style.backgroundColor='#ff003e'");
 			elmNewButton.addEventListener("click", function (a) {
 				let elmComment = document.querySelector('#wr_content')
-                if (document.location.href.indexOf('realddr') >= 0) {
-                    elmComment.value = '리뷰 잘 보고 갑니다.';
-                }
-                else {
-                    elmComment.value = '좋은 자료 감사합니다.';
-                }
-				apms_comment('viewcomment');
+				if (document.location.href.indexOf('realddr') >= 0) {
+					elmComment.value = '리뷰 잘 보고 갑니다.';
+				}
+				else if (document.location.href.indexOf('kyd') >= 0) {
+					elmComment.value = '좋은 자료 감사합니다.';
+				}
+				else if (document.location.href.indexOf('adtfr') >= 0) {
+					elmComment.value = '잘 보고 갑니다.';
+				}
+				// apms_comment('viewcomment');
 				elmComment.scrollIntoView();
 			}, !0);
 			return elmNewButton;
