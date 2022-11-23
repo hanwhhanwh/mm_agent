@@ -47,7 +47,7 @@ let CommentMain = {
 				else if (document.location.href.indexOf('adtfr') >= 0) {
 					elmComment.value = '잘 보고 갑니다.';
 				}
-				// apms_comment('viewcomment');
+				apms_comment('viewcomment');
 				elmComment.scrollIntoView({block: "center"});
 			}, !0);
 			return elmNewButton;
