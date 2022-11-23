@@ -48,7 +48,7 @@ let CommentMain = {
 					elmComment.value = '잘 보고 갑니다.';
 				}
 				// apms_comment('viewcomment');
-				elmComment.scrollIntoView();
+				elmComment.scrollIntoView({block: "center"});
 			}, !0);
 			return elmNewButton;
 		} catch (e) {
